@@ -13,7 +13,6 @@
 ## 注解用法
 ```
    @Data
-   @Builder
    public class User {
     
     private String name;
@@ -23,6 +22,7 @@
    }
  
    @Data
+   @Builder
    public class UserVo {
     
     @Copy("name")//指定要转换的列名
@@ -42,14 +42,14 @@
    public static void main(String[] args) {
         
         //单个Bean转换
-        User user = User.builder().name("小球某").age(20).build();
-        UserVo UserVo =  CopyUtils.copy(user, UserVo.class);
+        UserVo userVo = UserVo.builder().nameVo("小球某").age(3).sex("男").build();
+        User user = CopyUtils.copy(userVo, User.class);
         
         //多个Bean转换
-        User user1 = User.builder().name("张三").age(20).build();
-        User user2 = User.builder().name("李四").age(20).build(); 
-        List<User> userList = Arrays.asList(user1, user2);
-        List<UserVo> UserVoList = CopyUtils.copy(userList, UserVo.class);
+        UserVo userVo1 = UserVo.builder().nameVo("张三").age(18).sex("男").build();
+        UserVo userVo2 = UserVo.builder().nameVo("李四").age(22).sex("男").build();
+        List<UserVo> userVoList = Arrays.asList(userVo1, userVo2);
+        List<User> userList = CopyUtils.copy(userVoList, User.class);
         
         //map转Bean
         Map<String, Object> map = new HashMap<>();

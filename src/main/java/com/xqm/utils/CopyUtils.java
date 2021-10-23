@@ -29,16 +29,16 @@ public class CopyUtils {
         try {
             targe = targetClass.newInstance();
             Class<?> sourceClass = source.getClass();
-            Field[] fields = targetClass.getDeclaredFields();
+            Field[] fields = sourceClass.getDeclaredFields();
             for (Field field : fields) {
                 field.setAccessible(true);
                 if (handleExclude(field))
                     continue;
                 String mappingField=handleCopy(field);
                 try {
-                    Field sourceField = sourceClass.getDeclaredField(mappingField);
-                    sourceField.setAccessible(true);
-                    field.set(targe,sourceField.get(source));
+                    Field targetField = targetClass.getDeclaredField(mappingField);
+                    targetField.setAccessible(true);
+                    targetField.set(targe,field.get(source));
                 }catch (Exception e){}
             }
         } catch (Exception e) {

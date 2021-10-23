@@ -12,7 +12,22 @@
     <build>
         <plugins>
 
-           <!-- &lt;!&ndash;配置生成Javadoc包&ndash;&gt;
+
+            <!--生成doc jar包-->
+          <!--  <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+
+            <!--配置生成Javadoc包-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -32,8 +47,7 @@
                     </execution>
                 </executions>
             </plugin>
-
-            &lt;!&ndash;配置生成源码包&ndash;&gt;
+          <!--  &lt;!&ndash;配置生成源码包&ndash;&gt;
             <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-source-plugin</artifactId>
